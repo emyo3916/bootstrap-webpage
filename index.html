@@ -50,7 +50,7 @@ var containerDiv = document.getElementById("vizContainer"),
             includeAllColumns: false
         };
 
-        sheet.getUnderlyingDataAsync(options).then(function(t){
+        sheet.getSummaryDataAsync(options).then(function(t){
                table = t;
 var tgt = document.getElementById("dataTarget");
 tgt.innerHTML = "<h4>Underlying Data:</h4><p>" + JSON.stringify(table.getData()) + "</p>";

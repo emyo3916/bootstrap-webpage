@@ -5,11 +5,11 @@
     <title>Basic Embed</title>
 <!--https://help.tableau.com/current/api/js_api/en-us/JavaScriptAPI/js_api_concepts_get_API.htm-->
     <script type="text/javascript"
-	    src="https://viz.cu.edu/javascripts/api/tableau-2.min.js"></script>
+	    src='https://viz.cu.edu/javascripts/api/viz_v1.js'></script>
     <script type="text/javascript">
         function initViz() {
             var containerDiv = document.getElementById("vizContainer"),
-                url = "https://viz.cu.edu/t/ir/views/DynamicText/DynamicTextExample?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link",
+                url = "https://viz.cu.edu/t/ir/views/DynamicText/DynamicTextExample",
                 options = {
                     hideTabs: true,
                     onFirstInteractive: function () {

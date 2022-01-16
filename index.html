@@ -30,8 +30,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="product.css" rel="stylesheet">
+   
+    <script type="text/javascript"
+	    src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+    <script type="text/javascript">
+        function initViz() {
+            var containerDiv = document.getElementById("vizContainer"),
+                url = "http://public.tableau.com/views/RegionalSampleWorkbook/Storms",
+                options = {
+                    hideTabs: true,
+                    onFirstInteractive: function () {
+                        console.log("Run this code when the viz has finished loading.");
+                    }
+                };
+
+            var viz = new tableau.Viz(containerDiv, url, options);
+            // Create a viz object and embed it in the container div.
+        }
+    </script>
   </head>
-  <body>
+  <body onload="initViz();">
     
 <div class="container">
   <header class="blog-header py-3">
@@ -63,10 +81,7 @@
 
 <main class="container">
   <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-    <div class="col-md-6 px-0">
-      <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
-      <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-      <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
+    <div id="vizContainer" class="col-md-6 px-0">
     </div>
   </div>
 

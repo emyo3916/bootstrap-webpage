@@ -46,7 +46,7 @@ var containerDiv = document.getElementById("vizContainer"),
 // If the active sheet is not a dashboard, then you can just enter:
 // viz.getWorkbook().getActiveSheet();
         options = {
-            maxRows: 10, // Max rows to return. Use 0 to return all rows
+            maxRows: 100, // Max rows to return. Use 0 to return all rows
             ignoreAliases: false,
             ignoreSelection: true,
             includeAllColumns: false
@@ -58,12 +58,14 @@ var tgt = document.getElementById("dataTargetSummary");
 tgt.innerHTML = "<h4>Underlying Summary Data:</h4><p>" + JSON.stringify(table.getData()) + "</p>";
         
         });
+        sheet.getUnderlyingTablesAsync().then(tables => {
+	        // Get the first logical table and use that
+		return sheet.getUnderlyingTableDataAsync(tables[0].getTableId(), options).then(dataTable => {
+    	          var tgt = document.getElementById("dataTarget");
+                 tgt.innerHTML = "<h4>Underlying Full Data:</h4><p>" + JSON.stringify(dataTable.getData()) + "</p>";
+               });
+         });
 
-        sheet.getUnderlyingDataAsync(options).then(function(t){
-               table = t;
-        var tgt = document.getElementById("dataTargetFull");
-        tgt.innerHTML = "<h4>Underlying Full Data:</h4><p>" + JSON.stringify(table.getData()) + "</p>";
-        });
 
     }
 </script>

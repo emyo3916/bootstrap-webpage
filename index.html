@@ -52,8 +52,11 @@ var containerDiv = document.getElementById("vizContainer"),
 
         sheet.getSummaryDataAsync(options).then(function(t){
                table = t;
-var tgt = document.getElementById("dataTarget");
-tgt.innerHTML = "<h4>Underlying Data:</h4><p>" + JSON.stringify(table.getData()) + "</p>";
+var tgtS = document.getElementById("dataTargetSummary");
+var tgtF = document.getElementById("dataTargetFull");
+tgtS.innerHTML = "<h4>Underlying Data:</h4><p>" + JSON.stringify(table.getData()) + "</p>";
+tgtF.innerHTML = "<h4>Underlying Data:</h4><p>" + JSON.stringify(table.getData()) + "</p>";
+
         });
     }
 </script>
@@ -97,11 +100,14 @@ tgt.innerHTML = "<h4>Underlying Data:</h4><p>" + JSON.stringify(table.getData())
 </div>
 
 <main class="container">
-  <div class="p-4 p-md-5 mb-4 text-white overflow-auto rounded bg-light">
+  <div class="p-4 p-md-5 mb-4 text-black overflow-auto rounded bg-light">
     <div id="vizContainer" style="width:600px; height:600px;"></div>
   </div>
   <div class="p-4 p-md-5 mb-4 text-white overflow-auto rounded bg-dark">
-    <div id="dataTarget" style="width:600px; height:600px;"></div>
+    <div id="dataTargetSummary" style="width:600px; height:600px;"></div>
+  </div>
+  <div class="p-4 p-md-5 mb-4 text-white overflow-auto rounded bg-dark">
+    <div id="dataTargetFull" style="width:600px; height:600px;"></div>
   </div>
 
   <div class="row mb-2">

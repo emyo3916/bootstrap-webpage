@@ -58,7 +58,7 @@ tgt.innerHTML = "<h4>Underlying Summary Data:</h4><p>" + JSON.stringify(table.ge
         
         });
 
-        sheet.getUnderlyingDataAsync(options).then(function(t){
+        sheet.getUnderlyingTableDataAsync(options).then(function(t){
                table = t;
         var tgt = document.getElementById("dataTargetFull");
         tgt.innerHTML = "<h4>Underlying Full Data:</h4><p>" + JSON.stringify(table.getData()) + "</p>";

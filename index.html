@@ -37,6 +37,7 @@ var containerDiv = document.getElementById("vizContainer"),
                 }
             };
         viz = new tableau.Viz(containerDiv, url, options);
+        console.log("Worksheet initialized.");
     }
 
     function getUnderlyingData(){
@@ -54,13 +55,14 @@ var containerDiv = document.getElementById("vizContainer"),
                table = t;
 var tgt = document.getElementById("dataTargetSummary");
 tgt.innerHTML = "<h4>Underlying Summary Data:</h4><p>" + JSON.stringify(table.getData()) + "</p>";
-
+        
         });
+
         sheet.getUnderlyingDataAsync(options).then(function(t){
                table = t;
         var tgt = document.getElementById("dataTargetFull");
         tgt.innerHTML = "<h4>Underlying Full Data:</h4><p>" + JSON.stringify(table.getData()) + "</p>";
-        }
+        });
 
     }
 </script>

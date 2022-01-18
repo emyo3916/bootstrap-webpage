@@ -34,10 +34,11 @@ var containerDiv = document.getElementById("vizContainer"),
                 hideToolbar: true,
                 onFirstInteractive: function () {
                     document.getElementById('getData').disabled = false; // Enable our button
+                    console.log("Worksheet initialized.");
+
                 }
             };
         viz = new tableau.Viz(containerDiv, url, options);
-        console.log("Worksheet initialized.");
     }
 
     function getUnderlyingData(){
@@ -58,7 +59,7 @@ tgt.innerHTML = "<h4>Underlying Summary Data:</h4><p>" + JSON.stringify(table.ge
         
         });
 
-        sheet.getUnderlyingTableDataAsync(options).then(function(t){
+        sheet.getUnderlyingDataAsync(options).then(function(t){
                table = t;
         var tgt = document.getElementById("dataTargetFull");
         tgt.innerHTML = "<h4>Underlying Full Data:</h4><p>" + JSON.stringify(table.getData()) + "</p>";

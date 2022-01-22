@@ -72,6 +72,7 @@ tgt.innerHTML = "<h4>Underlying Full Data:</h4><p>" + JSON.stringify(table.getDa
     }
 
     function generateTable(table, data){
+      table.empty();
   for (let element of data) {
     let row = table.insertRow();
     for (key in element) {

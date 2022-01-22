@@ -60,7 +60,7 @@ var containerDiv = document.getElementById("vizContainer"),
                table = t;
                 var tgt = document.getElementById("dataTargetSummary");
                 var graph_data = table.getData();
-                table.remove();
+                tgt.innerHTML = "";
                 generateTable(tgt, graph_data);
                 //tgt.innerHTML = "<h4>Underlying Summary Data:</h4><p>" + JSON.stringify(table.getData()) + "</p>";
         

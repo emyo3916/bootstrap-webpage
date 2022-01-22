@@ -50,7 +50,7 @@ var containerDiv = document.getElementById("vizContainer"),
 // If the active sheet is not a dashboard, then you can just enter:
 // viz.getWorkbook().getActiveSheet();
         options = {
-            maxRows: 100, // Max rows to return. Use 0 to return all rows
+            maxRows: 0, // Max rows to return. Use 0 to return all rows
             ignoreAliases: false,
             ignoreSelection: true,
             includeAllColumns: false
@@ -58,8 +58,10 @@ var containerDiv = document.getElementById("vizContainer"),
 
         sheet.getSummaryDataAsync(options).then(function(t){
                table = t;
-var tgt = document.getElementById("dataTargetSummary");
-tgt.innerHTML = "<h4>Underlying Summary Data:</h4><p>" + JSON.stringify(table.getData()) + "</p>";
+                var tgt = document.getElementById("dataTargetSummary");
+                var graph_data = table.getData();
+                generateTable(tgt, graph_data);
+                //tgt.innerHTML = "<h4>Underlying Summary Data:</h4><p>" + JSON.stringify(table.getData()) + "</p>";
         
         });
         sheet.getUnderlyingDataAsync(options).then(function(t){
@@ -67,9 +69,20 @@ tgt.innerHTML = "<h4>Underlying Summary Data:</h4><p>" + JSON.stringify(table.ge
 var tgt = document.getElementById("dataTargetFull");
 tgt.innerHTML = "<h4>Underlying Full Data:</h4><p>" + JSON.stringify(table.getData()) + "</p>";
          });
-
-
     }
+
+    function generateTable(table, data){
+  for (let element of data) {
+    let row = table.insertRow();
+    for (key in element) {
+      for (let prop in element[key]) {
+        let cell = row.insertCell();
+        let text = document.createTextNode(element[key][prop]);
+      cell.appendChild(text);
+    }
+  }
+  }
+}
 </script>
     
     <!-- Custom styles for this template -->
@@ -85,9 +98,7 @@ tgt.innerHTML = "<h4>Underlying Full Data:</h4><p>" + JSON.stringify(table.getDa
 <div class="container">
   <header class="blog-header py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
-      <div class="col-4 pt-1">
-        <a class="link-secondary" href="#">some sort of link</a>
-      </div>
+
       <div class="col-4 text-center">
         <a class="blog-header-logo text-dark" href="#">Tableau Experiments</a>
       </div>
@@ -115,7 +126,8 @@ tgt.innerHTML = "<h4>Underlying Full Data:</h4><p>" + JSON.stringify(table.getDa
     <div id="vizContainer" style="width:600px; height:600px;"></div>
   </div>
   <div class="p-4 p-md-5 mb-4 text-white overflow-auto rounded bg-dark">
-    <div id="dataTargetSummary" style="width:600px; height:600px;"></div>
+    <table class='table table-dark table-striped' id='dataTargetSummary'>
+    </table>
   </div>
   <div class="p-4 p-md-5 mb-4 text-white overflow-auto rounded bg-dark">
     <div id="dataTargetFull" style="width:600px; height:600px;"></div>

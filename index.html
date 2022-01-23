@@ -68,6 +68,7 @@ var containerDiv = document.getElementById("vizContainer"),
         sheet.getUnderlyingDataAsync(options).then(function(t){
                table = t;
               var tgt = document.getElementById("dataTargetFull");
+              var graph_data = table.getData();
               tgt.innerHTML = "";
               generateTable(tgt, graph_data);
 //tgt.innerHTML = "<h4>Underlying Full Data:</h4><p>" + JSON.stringify(table.getData()) + "</p>";
@@ -75,17 +76,17 @@ var containerDiv = document.getElementById("vizContainer"),
     }
 
     function generateTable(table, data){
-  for (let element of data) {
-    let row = table.insertRow();
-    for (key in element) {
-      for (let prop in element[key]) {
-        let cell = row.insertCell();
-        let text = document.createTextNode(element[key][prop]);
-      cell.appendChild(text);
+      for (let element of data) {
+      let row = table.insertRow();
+      for (key in element) {
+        for (let prop in element[key]) {
+         let cell = row.insertCell();
+          let text = document.createTextNode(element[key][prop]);
+        cell.appendChild(text);
+     }
+    }
     }
   }
-  }
-}
 </script>
     
     <!-- Custom styles for this template -->

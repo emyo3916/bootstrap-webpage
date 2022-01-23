@@ -110,7 +110,6 @@ var containerDiv = document.getElementById("vizContainer"),
         <a class="link-secondary" href="#" aria-label="Search">
           <svg xmlns="https://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
         </a>
-        <button id="getData" onclick="getUnderlyingData()" class="btn btn-sm btn-outline-secondary" disabled>Get Data</button>
       </div>
     </div>
   </header>
@@ -128,14 +127,15 @@ var containerDiv = document.getElementById("vizContainer"),
 <main class="container">
   <div class="p-4 p-md-5 mb-4 text-black overflow-auto rounded bg-light">
     <div id="vizContainer" style="width:600px; height:600px;"></div>
+    <button id="getData" onclick="getUnderlyingData()" class="btn btn-sm btn-outline-secondary" disabled>Get Data</button>
   </div>
   <div class="p-4 p-md-5 mb-4 text-white overflow-auto rounded bg-dark">
-    <h2>Summary Data</h2>
+    <h3>Summary Data</h3>
     <table class='table table-dark table-striped' id='dataTargetSummary'>
     </table>
   </div>
   <div class="p-4 p-md-5 mb-4 text-white overflow-auto rounded bg-dark" style="max-height:600px;" >
-    <h2>Full Data</h2>
+    <h3>Full Data</h3>
     <table class='table table-dark table-striped' id='dataTargetFull'>
       </table>
   </div>

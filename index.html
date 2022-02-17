@@ -47,6 +47,13 @@
       viz = new tableau.Viz(containerDiv, url, options);
     }
 
+    function vizResize() {
+            var width = document.getElementById("resizeWidth").value;
+            var height = document.getElementById("resizeHeight").value;
+
+			viz.setFrameSize(parseInt(width, 10), parseInt(height, 10));
+        }
+
     function getUnderlyingData() {
       sheet = viz.getWorkbook().getActiveSheet().getWorksheets().get("CU Belonging SB");
       // If the active sheet is not a dashboard, then you can just enter:
@@ -124,6 +131,15 @@
     <div class="p-1 p-md-1 mb-1 text-black overflow-auto rounded bg-light">
       <div id="vizContainer" style="width:600px; height:600px;"></div>
     </div>
+
+    <div id="controls" style="padding:20px;">
+      <form id="resizeForm">
+          <input type="text" id="resizeWidth" placeholder="Width">
+          <input type="text" id="resizeHeight" placeholder="Height">
+          <button type="button" onClick="vizResize();">Resize</button>
+      </form>
+  </div>
+  
     <div class="py-2 mx-auto">
     <button id="getData" onclick="getUnderlyingData()" class="btn btn-primary" disabled>Get
       Data</button>
